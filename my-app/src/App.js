@@ -12,4 +12,8 @@ App.propTypes = {
   age: PropTypes.number.isRequired
 }
 
+App.defaultProps = {
+  age: 23
+}
+
 export default App;
