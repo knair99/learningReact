@@ -3,5 +3,5 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 ReactDOM.render(
-	<App text="hey there"/>,
+	<App age={13} text="hey there"/>,
 	 document.getElementById('root'));
