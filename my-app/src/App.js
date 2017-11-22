@@ -12,20 +12,23 @@ class App extends React.Component {
     };
   }
 
-  incrementCounter = () => {
+  incrementCounter = (inc_val) => {
     this.setState( (prevState) => {
-      return {counter: prevState.counter + 1};
+      return {counter: prevState.counter + inc_val};
     });
   }
 
   render(){
-    //We can pass a reference to anything from the parent to the child component 
-    //This can just be data, which will be available in the child's prop - like Div component
-    //This can also be a callback, which will be available as a prop in the child - like button component
+    //Passing data into the ButtonComponents (incrementValue)
     return (
       <div>
+        <hr/>
         <DivComponent counter_variable = {this.state.counter}/>
-        <ButtonComponent onClickFunction={this.incrementCounter}/>
+        <ButtonComponent incrementValue={5} onClickFunction={this.incrementCounter}/>
+        <ButtonComponent incrementValue={15} onClickFunction={this.incrementCounter}/>
+        <ButtonComponent incrementValue={25} onClickFunction={this.incrementCounter}/>
+        <hr/>
+
       </div>);
   }
 }
@@ -35,11 +38,14 @@ const DivComponent = (props) => <div> {props.counter_variable} </div>;
 
 //class component
 class ButtonComponent extends React.Component{
-   //function that handles component's onClick events
+   //bring back a function that will pass the value on up to the function in the parent
+   handleClick = () => {
+    this.props.onClickFunction(this.props.incrementValue);
+   }
 
   render(){
     //The passed callback is available as a props member now
-    return <button onClick={this.props.onClickFunction}> +1 </button>;
+    return <button onClick={this.handleClick}> +{this.props.incrementValue} </button>;
   }
 }
 
