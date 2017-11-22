@@ -21,8 +21,16 @@ class Button2 extends React.Component{
     };
   }
 
+  //function that handles component's onClick events
+  handleClick = () =>{
+    //All changes to state must be handled via setState method call
+    this.setState({
+      counter: this.state.counter + 1
+    });
+  }
+
   render(){
-    return <button> {this.state.counter} </button>;
+    return <button onClick={this.handleClick}> {this.state.counter} </button>;
   }
 }
 
