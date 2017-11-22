@@ -22,10 +22,13 @@ class Button2 extends React.Component{
   }
 
   //function that handles component's onClick events
-  handleClick = () =>{
+  handleClick = () => {
     //All changes to state must be handled via setState method call
-    this.setState({
-      counter: this.state.counter + 1
+    //This function is asynchronous = reading and writing counter can cause race condition
+    this.setState( (prevState) => { //Get the previous state by specifying a callback, which gets previous state
+      return {
+        counter: prevState.counter + 1 //update new counter using counter value from previous state
+      };
     });
   }
 
