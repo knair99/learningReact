@@ -25,11 +25,13 @@ class App extends React.Component {
     //Introduce an input so we can change state dynamically using update method
     return( 
       <div>
-          <input type="text" onChange={this.update.bind(this)}/>
+          <Widget update={this.update.bind(this)}/>
           <h1> {this.state.text} </h1>
       </div>
       );
   }
 }
+
+const Widget = (props) => <input type="text" onChange={props.update}/>
 
 export default App;
