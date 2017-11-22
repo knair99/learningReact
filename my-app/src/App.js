@@ -2,36 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class App extends React.Component {
-  
-  //Fjrst define a constructor
-  constructor(){
-    super(); //Binds 'this' to current object
-
-    //Next, create object to hold state
-    this.state = {
-      text: "This is state text"
-    }
-  }
-
-    //Create a method to manage state
-    update (event){
-      //Define object that goes into managing state
-      this.setState({
-          text: event.target.value
-        });
-    }
-  
   render(){
-    //Introduce an input so we can change state dynamically using update method
-    return( 
-      <div>
-          <Widget update={this.update.bind(this)}/>
-          <h1> {this.state.text} </h1>
-      </div>
-      );
+    return <Button2/>;
   }
 }
 
-const Widget = (props) => <input type="text" onChange={props.update}/>
+//Function component
+const Button1 = (props) => <button> 7 </button>;
+
+//class component
+class Button2 extends React.Component{
+  render(){
+    return <button> 8 </button>;
+  }
+}
 
 export default App;
